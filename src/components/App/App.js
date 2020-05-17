@@ -52,6 +52,9 @@ export default class App extends Component {
     return JSON.parse(localStorage.getItem('wordsList')) || wordsList;
   }
 
+  shouldComponentUpdate (nextProps, nextState) { 
+    return (this.state.cards.length !== nextState.cards.length) 
+  }
 
   componentDidMount() {
     scroll.scrollTo({ 
