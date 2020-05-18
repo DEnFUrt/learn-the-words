@@ -1,0 +1,23 @@
+.customBtn {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+    cursor: default;
+
+    &>button {
+      margin-right: -15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 1.5rem;
+      color: whitesmoke;
+      translate: 0.5s all;
+    
+      &:hover {
+        color: red;
+        translate: 0.5s all;
+      }
+    }  
+}

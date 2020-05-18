@@ -16,7 +16,7 @@ const CardHolder = (props) => {
         id="cardHolder"
       >
         {
-          wordsList.map((item, index) => <Card key={Date.now() + Math.random(0.5) + index} card={item} {...cardProps} />)
+          wordsList.map(item => <Card key={item.id} card={item} {...cardProps} />)
         }
       </div>
       <div

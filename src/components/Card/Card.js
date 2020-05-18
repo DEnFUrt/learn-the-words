@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ButtonDelete from '../ButtonDelete';
 import s from './Card.module.scss';
 
 export default class Card extends Component {
@@ -31,15 +32,22 @@ export default class Card extends Component {
   }
 
   render() {
-		const {eng, rus, done} = this.state.card;
+    const {eng, rus, done, id} = this.state.card;
     const cardClass = this.setCardClass(done);
+    const {onDelCard} = this.props;
         
     return (
       <div 
         className={cardClass.join(' ')}
-        onClick={this.onToggleCard}
+        // onClick={this.onToggleCard}
       >
-        <div className={s.cardInner}>
+        <ButtonDelete
+          onDelCard={() => onDelCard(id)}
+        />
+        <div 
+          className={s.cardInner}
+          onClick={this.onToggleCard}
+          >
           <div className={s.cardFront}>
             <span>{ eng }</span>
           </div>

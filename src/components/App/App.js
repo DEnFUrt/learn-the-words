@@ -19,37 +19,57 @@ export default class App extends Component {
 
     this.addCard = this.addCard.bind(this);
     this.onChangeCard = this.onChangeCard.bind(this);
+    this.onDelCard = this.onDelCard.bind(this);
+  }
+
+  onSetState(newCards) {
+    this.setState(({ cards }) => ({ cards: newCards }),
+      () => this.saveToLocalStorage(this.state.cards));
   }
 
   onChangeCard(card) {
     const oldCards = this.state.cards;
-    
     const newCards = oldCards.map(
       item => item.eng === card.eng ? {...item, done: card.done} : item
       );
 
-    this.setState({cards: newCards},
-      () => this.saveToLocalStorage(this.state.cards));
+    this.onSetState(newCards);
   }
 
   addCard(card) {
     const oldCards = this.state.cards;
     const newCards = [...oldCards, card];
 
-    this.setState({cards: newCards},
-      () => this.saveToLocalStorage(this.state.cards));
+    this.onSetState(newCards);
+  }
+
+  onDelCard(id) {
+    const oldCards = this.state.cards;
+    const newCards = oldCards.filter(card => card.id !== id);
+    
+    this.onSetState(newCards);
   }
 
   saveToLocalStorage(cards) {
     try {
       localStorage.setItem('wordsList', JSON.stringify(cards));
     } catch (e) {
-        alert('Ошибка записи: ', e.message);
+        alert('Ошибка записи, последние изменения не сохранились! ', e.message);
     }
   }
 
   readLocalFromStorage() {
-    return JSON.parse(localStorage.getItem('wordsList')) || wordsList;
+    const cards = JSON.parse(localStorage.getItem('wordsList')) || [];
+    return  cards.length !== 0 ? cards : wordsList;
+  }
+
+  addId(cards) {
+    cards.forEach((card, index) => {
+      if (card.id === undefined) {
+        card.id = Date.now() + Math.random(0.5) + index
+      }
+    });
+    return cards;
   }
 
   shouldComponentUpdate (nextProps, nextState) { 
@@ -62,13 +82,15 @@ export default class App extends Component {
       smooth: true,
       containerId: 'headerBlock',
     });
-    const cards = this.readLocalFromStorage();
+
+    const cards = this.addId(this.readLocalFromStorage());
+
     this.setState({cards});
   }
 
   render() {
     const {cards} = this.state;
-
+  
     return (
       <>
         <HeaderBlock>
@@ -85,6 +107,7 @@ export default class App extends Component {
         <CardHolder
           wordsList={cards}
           onChangeCard = {this.onChangeCard}
+          onDelCard = {this.onDelCard}
         ></CardHolder>
         <FooterBlock
           hideBackground
