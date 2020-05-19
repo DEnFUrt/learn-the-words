@@ -30,7 +30,7 @@ export default class App extends Component {
   onChangeCard(card) {
     const oldCards = this.state.cards;
     const newCards = oldCards.map(
-      item => item.eng === card.eng ? {...item, done: card.done} : item
+      item => item.id === card.id ? {...item, done: card.done} : item
       );
 
     this.onSetState(newCards);
@@ -58,7 +58,7 @@ export default class App extends Component {
     }
   }
 
-  readLocalFromStorage() {
+  readFromLocalStorage() {
     const cards = JSON.parse(localStorage.getItem('wordsList')) || [];
     return  cards.length !== 0 ? cards : wordsList;
   }
@@ -83,7 +83,7 @@ export default class App extends Component {
       containerId: 'headerBlock',
     });
 
-    const cards = this.addId(this.readLocalFromStorage());
+    const cards = this.addId(this.readFromLocalStorage());
 
     this.setState({cards});
   }
