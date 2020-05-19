@@ -1,0 +1,17 @@
+.button {
+  padding: 10px;
+  height: 50px;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  transition: 0.5s all;
+
+  &:hover {
+    font-size: 2.5rem;
+    transition: 0.5s all;
+  }
+}

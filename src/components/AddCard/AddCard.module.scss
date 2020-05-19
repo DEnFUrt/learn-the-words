@@ -1,0 +1,35 @@
+
+.newCardLabel {
+  margin-top: 20px;
+
+  .newCardInput {
+    width: auto;
+    height: 30px;
+    flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .newCardBtn {
+    cursor: pointer;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+    background: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 10px 10px 5px rgba(26,40,120,.7);
+    transition: 0.5s all;
+
+    &:hover {
+      font-size: 1.5rem;
+      transition: 0.5s all;
+    }
+  }
+}
+
+
