@@ -11,6 +11,15 @@
       transform: rotateY(180deg);
     }
   }
+
+  &.fixDone {
+    .cardFront{
+    background-color: rgba(165, 168, 172, 0.918);
+    color: rgb(26, 25, 25);
+    font-style: oblique;
+    text-decoration: line-through;
+    }
+  }
 }
 
 .cardInner {

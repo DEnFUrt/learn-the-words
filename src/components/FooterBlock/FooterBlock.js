@@ -4,7 +4,7 @@ import Footer from '../Footer';
 
 import s from './FooterBlock.module.scss';
 
-const HeaderBlock = ({ hideBackground = false, onAdd, children }) => {
+const HeaderBlock = ({ hideBackground = false, onAddCard, children }) => {
   const styleColor = hideBackground ? {backgroundImage: 'none'} : {};
   
   return (
@@ -12,7 +12,7 @@ const HeaderBlock = ({ hideBackground = false, onAdd, children }) => {
       <div className={s.wrap}>
         <Footer/>
         <AddCard
-          onAdd={(card) => onAdd(card)}
+          onAddCard={(card) => onAddCard(card)}
         />
         {children}
       </div>

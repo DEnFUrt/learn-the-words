@@ -30,7 +30,7 @@ export default class App extends Component {
   onChangeCard(card) {
     const oldCards = this.state.cards;
     const newCards = oldCards.map(
-      item => item.id === card.id ? {...item, done: card.done} : item
+      item => item.id === card.id ? card : item
       );
 
     this.onSetState(newCards);
@@ -63,10 +63,13 @@ export default class App extends Component {
     return  cards.length !== 0 ? cards : wordsList;
   }
 
-  addId(cards) {
+  addData(cards) {
     cards.forEach((card, index) => {
       if (card.id === undefined) {
-        card.id = Date.now() + Math.random(0.5) + index
+        card.id = Date.now() + Math.random(0.5) + index;
+      }
+      if (card.fixDone === undefined) {
+        card.fixDone = false;
       }
     });
     return cards;
@@ -83,7 +86,7 @@ export default class App extends Component {
       containerId: 'headerBlock',
     });
 
-    const cards = this.addId(this.readFromLocalStorage());
+    const cards = this.addData(this.readFromLocalStorage());
 
     this.setState({cards});
   }
@@ -108,10 +111,11 @@ export default class App extends Component {
           wordsList={cards}
           onChangeCard = {this.onChangeCard}
           onDelCard = {this.onDelCard}
+          onFixDoneCard = {this.onChangeCard} //{this.onFixDoneCard}
         ></CardHolder>
         <FooterBlock
           hideBackground
-          onAdd = {this.addCard}
+          onAddCard = {this.addCard}
         ></FooterBlock>
       </>
     );
