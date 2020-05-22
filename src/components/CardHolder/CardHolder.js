@@ -6,6 +6,17 @@ import s from './CardHolder.module.scss';
 
 const CardHolder = (props) => {
   const {wordsList, ...cardProps} = props;
+  let cards = [];
+
+  if (wordsList.length > 0) {
+    cards = wordsList.map(item => <Card key={item.id} card={item} {...cardProps} />)
+  } else {
+    cards = (
+      <h1
+        style={ {color: 'white', fontSize: '2.5rem'} }
+      >☹ Упс... Карточек больше нет...</h1>
+    );
+  }
 
   return (
     <section
@@ -15,9 +26,7 @@ const CardHolder = (props) => {
         className={s.containerCards}
         id="cardHolder"
       >
-        {
-          wordsList.map(item => <Card key={item.id} card={item} {...cardProps} />)
-        }
+        {cards}
       </div>
       <div
         className={s.containerBtn}

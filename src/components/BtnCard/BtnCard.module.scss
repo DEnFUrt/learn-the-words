@@ -1,0 +1,42 @@
+.btn {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+
+    &.btnDelCard {
+      right: 0;
+      margin-right: -15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 1.5rem;
+      color: whitesmoke;
+      translate: 0.5s all;
+    
+      &:hover {
+        color: red;
+        translate: 0.5s all;
+      }
+    }
+    
+    &.btnFixCard {
+      left: 0;
+      margin-left: -15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 1.5rem;
+      color: whitesmoke;
+      translate: 0.5s all;
+    
+      &:hover {
+        color: red;
+        translate: 0.5s all;
+      }
+      
+    }
+}

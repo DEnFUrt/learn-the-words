@@ -20,11 +20,12 @@ export default class AddCard extends Component {
     if (eng.trim() === '' || rus.trim() === '') {
       return
     }
-    this.props.onAdd({
+    this.props.onAddCard({
       eng,
       rus,
       done: false,
       id: Date.now() + Math.random(0.5),
+      fixDone: false,
     });
     
     this.engInput.current.value = '';
