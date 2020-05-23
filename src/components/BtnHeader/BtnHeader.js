@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-scroll';
 
-import s from './Button.module.scss';
+import s from './BtnHeader.module.scss';
 
-const Button = ({ children }) => {
+const BtnHeader = ({ children }) => {
   return <button
       className={s.button}
     >
@@ -18,4 +18,4 @@ const Button = ({ children }) => {
     </button>;
 };
 
-export default Button;
+export default BtnHeader;

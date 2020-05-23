@@ -3,10 +3,11 @@ import { animateScroll as scroll } from 'react-scroll';
 import HeaderBlock from '../HeaderBlock';
 import FooterBlock from '../FooterBlock';
 import Header from '../Header';
+import BtnHeader from '../BtnHeader';
 import Paragraph from '../Paragraph';
-import Button from '../Button';
 import CardHolder from '../CardHolder';
 import {wordsList} from '../wordsList';
+import Copyright from '../Copyright'
 
 import './App.scss';
 
@@ -103,20 +104,21 @@ export default class App extends Component {
           <Paragraph>
             Используйте карточки для заполнения и пополняйте активный словарный запас
           </Paragraph>
-          <Button>
+          <BtnHeader>
             Начните прямо сейчас!
-          </Button>
+          </BtnHeader>
         </HeaderBlock>
         <CardHolder
           wordsList={cards}
           onChangeCard = {this.onChangeCard}
           onDelCard = {this.onDelCard}
-          onFixDoneCard = {this.onChangeCard} //{this.onFixDoneCard}
-        ></CardHolder>
+          onFixDoneCard = {this.onChangeCard}
+        />
         <FooterBlock
           hideBackground
           onAddCard = {this.addCard}
-        ></FooterBlock>
+        />
+        <Copyright />
       </>
     );
     }
