@@ -45,7 +45,6 @@ export default class AddCard extends Component {
           placeholder="English word..."
           pattern="^[a-zA-Z]+$"
           className={s.newCardInput}
-          ref={this.engInput}
           required
         />
         <input
@@ -54,7 +53,6 @@ export default class AddCard extends Component {
           placeholder="Русское слово..."
           pattern="^[А-Яа-яЁё\s]+$" 
           className={s.newCardInput}
-          ref={this.rusInput}
           required
         />
         <button
